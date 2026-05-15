@@ -922,7 +922,7 @@
       "options": [
         "tratar de evitar la congestión en los routers intermedios.",
         "invitar la congestión en el receptor.",
-        "a) y b) son correctas."
+        "Todas son correctas."
       ],
       "a": "tratar de evitar la congestión en los routers intermedios.",
       "explicacion": ""
@@ -935,9 +935,9 @@
       "options": [
         "por la recepción de 3 ACKs duplicados.",
         "por el vencimiento del temporizador de retransmisión.",
-        "a) y b) son correctas."
+        "Todas son correctas."
       ],
-      "a": "a) y b) son correctas.",
+      "a": "Todas son correctas.",
       "explicacion": ""
     },
     {
@@ -1104,9 +1104,9 @@
       "options": [
         "sirve para convertir direcciones IP en nombres de dominio.",
         "sirve para convertir nombres de máquinas en direcciones IP.",
-        "a) y b) son correctas"
+        "Todas son correctas"
       ],
-      "a": "a) y b) son correctas",
+      "a": "Todas son correctas",
       "explicacion": ""
     },
     {
