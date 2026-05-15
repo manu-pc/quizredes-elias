@@ -355,6 +355,7 @@
       "q": "Respecto a la red que se muestra en la figura 2, y teniendo en cuenta que la dirección de red de todas las interfaces es 199.53.10.X: ¿Cuál es la dirección de subred del segmento C?",
       "type": "multiple",
       "difficulty": 2,
+      "img_q": "@fig2_red",
       "options": [
         "199.53.10.128",
         "199.53.10.160",
