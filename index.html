@@ -878,9 +878,7 @@
 
 
         <div class="file-loader">
-            <label for="fileInput">Cargar archivo JSON con preguntas</label>
-            <input type="file" id="fileInput" accept=".json" onchange="loadQuestionsFromFile(event)">
-            <div class="file-status" id="fileStatus">Ningún archivo cargado</div>
+            <div class="file-status" id="fileStatus">Cargando redes.json...</div>
         </div>
 
         <div class="quiz-container" id="quizContainer">
@@ -2214,6 +2212,42 @@ document.addEventListener("keydown", function(e) {
                 saveProgress();
             }
         }
+
+        /* ═══════════════════ AUTO-LOAD redes.json ═══════════════════ */
+        (function autoLoad() {
+            fetch("redes.json")
+                .then(function(r) {
+                    if (!r.ok) throw new Error("No se pudo cargar redes.json (" + r.status + ")");
+                    return r.json();
+                })
+                .then(function(data) {
+                    let questionsArray;
+                    let imageBank = {};
+
+                    if (Array.isArray(data)) {
+                        questionsArray = data;
+                    } else if (data && Array.isArray(data.questions)) {
+                        questionsArray = data.questions;
+                        if (data.image_bank && typeof data.image_bank === "object") {
+                            imageBank = data.image_bank;
+                        }
+                    } else {
+                        throw new Error("Formato no reconocido en redes.json");
+                    }
+
+                    allQuestions = questionsArray.map(function(q) { return normalizeQuestionObject(q, imageBank); });
+                    if (allQuestions.length === 0) throw new Error("redes.json no contiene preguntas.");
+
+                    document.getElementById("fileStatus").textContent = "redes.json · " + allQuestions.length + " preguntas";
+                    document.getElementById("loadingMessage").style.display = "none";
+                    document.getElementById("quizContainer").classList.add("active");
+                    initQuiz();
+                })
+                .catch(function(err) {
+                    console.error(err);
+                    document.getElementById("fileStatus").textContent = "Error: " + err.message;
+                });
+        })();
     </script>
 </body>
 </html>
